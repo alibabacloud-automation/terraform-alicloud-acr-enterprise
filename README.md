@@ -11,17 +11,20 @@ These types of resources are supported:
 
 ```hcl
 module "example" {
-  source         = "terraform-alicloud-modules/acr-enterprise/alicloud"
-  payment_type   = "Subscription"
-  period         = 1
-  instance_type  = "Basic"
-  renewal_status = "ManualRenewal"
-  instance_name  = "your_instance_name"
+  source          = "terraform-alicloud-modules/acr-enterprise/alicloud"
+  create_instnace = true
+  payment_type    = "Subscription"
+  period          = 1
+  instance_type   = "Basic"
+  renewal_status  = "ManualRenewal"
+  instance_name   = "your_instance_name"
 
+  create_namespace   = true
   namespace_name     = "namespace_name"
   auto_create        = true
   default_visibility = "PUBLIC"
 
+  create_repo  = true
   repo_name    = "module_test_repo_name"
   repo_type    = "PUBLIC"
   repo_summary = "your_summary"
