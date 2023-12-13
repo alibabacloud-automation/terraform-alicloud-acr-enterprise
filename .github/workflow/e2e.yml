@@ -1,0 +1,33 @@
+name: E2E Test Check
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+    types: [ 'opened', 'synchronize' ]
+    paths:
+      - '.github/**'
+      - '.github/workflows/**'
+      - 'examples/**'
+
+jobs:
+  e2e-check:
+    runs-on: terraform-alicloud-landing
+    environment:
+      name: acctests
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v34
+        with:
+          dir_names: "true"
+          separator: ","
+          files: "examples/*"
+          files_ignore: "**/TestRecord.md"
+          dir_names_max_depth: 2
+      - name: test pr
+        run: |
+          bash scripts/terraform-install.sh
+          bash scripts/terraform-test.sh false

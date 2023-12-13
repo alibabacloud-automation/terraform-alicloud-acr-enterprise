@@ -4,6 +4,7 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
+**/TestRecord.md.tmp
 
 # Crash log files
 crash.log
