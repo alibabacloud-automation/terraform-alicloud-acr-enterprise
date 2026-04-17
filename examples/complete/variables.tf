@@ -19,13 +19,13 @@ variable "repo_type" {
 
 variable "repo_summary" {
   type        = string
-  description = ""
+  description = "The repository general information. It can contain 1 to 100 characters."
   default     = "repo_summary"
 }
 
 variable "repo_detail" {
   type        = string
-  description = ""
+  description = "The repository specific information. MarkDown format is supported, and the length limit is 2000."
   default     = "repo_detail"
 }
 

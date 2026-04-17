@@ -1,7 +1,6 @@
 locals {
-  instance_id    = var.instance_id != "" ? var.instance_id : concat(alicloud_cr_ee_instance.default.*.id, [""])[0]
-  namespace_name = var.namespace_name != "" ? var.namespace_name : concat(alicloud_cr_ee_namespace.default.*.name, [""])[0]
-  repo_name      = var.repo_name != "" ? var.repo_name : concat(alicloud_cr_ee_repo.default.*.name, [""])[0]
+  instance_id    = var.instance_id != "" ? var.instance_id : concat(alicloud_cr_ee_instance.default[*].id, [""])[0]
+  namespace_name = var.namespace_name != "" ? var.namespace_name : concat(alicloud_cr_ee_namespace.default[*].name, [""])[0]
 }
 
 resource "alicloud_cr_ee_instance" "default" {
